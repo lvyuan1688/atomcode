@@ -635,3 +635,22 @@ MIT License. See [LICENSE](LICENSE) for details.
 <p align="center">
   Built with Rust, ratatui, and a lot of late nights.
 </p>
+
+
+## Active Maintenance (lvyuan1688)
+
+This fork is actively maintained by **lvyuan1688** as part of the open-source ecosystem contributions:
+
+- **PR reviews**: ongoing review of community PRs against upstream atomcode
+- **Issue triage**: categorizing and responding to community issues
+- **Release management**: cutting stable v0.1.x releases with changelog
+- **Cross-platform support**: maintaining install scripts for Linux/macOS/Windows
+- **Docker hardening**: maintaining Dockerfile variants for Daemon + TUI deployments
+
+**Contact**: lvyaoyuan168@gmail.com  
+**GitHub**: https://github.com/lvyuan1688
+
+## Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
+All contributions are reviewed by the active maintainer (lvyuan1688).
