@@ -115,3 +115,7 @@ extensions/vscode/webview/webview.js
 extensions/vscode/webview/webview.js.map
 .hooks.json
 extensions/jetbrains/.spec_docs
+
+# Dev scripts (not for release)
+maintain.py
+*.local.*
