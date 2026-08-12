@@ -1,0 +1,11 @@
+# Example: connect atomcode to Anthropic Claude
+[llm]
+provider = "anthropic"
+endpoint = "https://api.anthropic.com"
+model = "claude-sonnet-4-5"
+temperature = 0.2
+max_tokens = 8192
+
+[agent]
+tools = ["edit_file", "run_command", "read_file", "write_file"]
+verify = "cargo build --release"
