@@ -1,0 +1,11 @@
+# Example: connect atomcode to local Ollama LLM
+[llm]
+provider = "ollama"
+endpoint = "http://localhost:11434"
+model = "qwen2.5-coder:7b"
+temperature = 0.2
+max_tokens = 4096
+
+[agent]
+tools = ["edit_file", "run_command", "read_file", "write_file"]
+verify = "cargo build --release"
