@@ -32,8 +32,10 @@ debug = "line-tables-only" # Smaller binaries, faster linker
 version = "4.25.9"
 edition = "2021"
 license = "MIT"
-repository = "https://atomgit.com/atomgit_atomcode/atomcode"
-description = "Open-source terminal AI coding agent"
+repository = "https://github.com/lvyuan1688/atomcode"
+description = "Open-source terminal AI coding agent — Rust alternative to Claude Code, bring-your-own-LLM, edits code, runs commands, verifies changes autonomously"
+keywords = ["ai", "agent", "cli", "coding", "llm"]
+categories = ["command-line-utilities", "development-tools"]
 
 [workspace.dependencies]
 agent-client-protocol = "=1.0.1"
