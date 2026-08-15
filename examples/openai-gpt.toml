@@ -1,0 +1,11 @@
+# Example: connect atomcode to OpenAI GPT
+[llm]
+provider = "openai"
+endpoint = "https://api.openai.com"
+model = "gpt-4o"
+temperature = 0.2
+max_tokens = 8192
+
+[agent]
+tools = ["edit_file", "run_command", "read_file", "write_file"]
+verify = "cargo build --release"
