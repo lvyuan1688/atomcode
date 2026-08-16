@@ -111,7 +111,7 @@ def run_one(idx=None):
     git("commit","-m",msg)
     git("push","github","main")
     # 建 patch release
-    req = urllib.request.Request("https://api.github.com/repos/lvyuan1688/atomcode/releases?per_page=50")
+    req = urllib.request.Request("https://api.github.com/repos/lvyuan1688/atomcode/releases?per_page=100")
     req.add_header("Authorization", "Bearer " + PAT)
     req.add_header("Accept", "application/vnd.github+json")
     try:
