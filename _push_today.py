@@ -21,8 +21,18 @@ REPO = "lvyuan1688/atomcode"
 HEADERS = {"Authorization": "Bearer " + PAT, "Accept": "application/vnd.github+json", "Content-Type": "application/json"}
 
 def git(*a, **kw):
-    r = subprocess.run(["git"] + list(a), capture_output=True, text=True, **kw)
+    r = subprocess.run(["git"] + list(a), capture_output=True, text=True, encoding="utf-8", errors="replace", **kw)
     return r
+
+def run_cmd(*a, timeout_s=45):
+    """Run a command with robust stderr decoding (git on Windows may emit GBK)."""
+    try:
+        r = subprocess.run(list(a), capture_output=True, timeout=timeout_s)
+        return r.returncode, r.stdout.decode("utf-8", "replace"), (r.stderr.decode("utf-8", "replace") if r.stderr else "")
+    except subprocess.TimeoutExpired:
+        return 124, "", "timeout"
+    except Exception as e:
+        return 1, "", str(e)
 
 def gh_get(path):
     req = urllib.request.Request("https://api.github.com" + path)
@@ -83,11 +93,10 @@ for n, idx in enumerate(INDICES):
     print(f"  commit ok", flush=True)
 
     # push clean-push:main to origin (fast-forward, clean history)
-    push = subprocess.run(["timeout", "45", "git", "push", "origin", "clean-push:main"],
-                          capture_output=True, text=True)
-    if push.returncode != 0:
-        print(f"  push FAIL: {push.stderr.strip()[:200]}", flush=True)
-        results.append({"idx": idx, "commit_ok": True, "push_ok": False, "err": push.stderr.strip()[:200]})
+    rc, out, err = run_cmd("git", "push", "origin", "clean-push:main", timeout_s=60)
+    if rc != 0:
+        print(f"  push FAIL rc={rc}: {err.strip()[:200]}", flush=True)
+        results.append({"idx": idx, "commit_ok": True, "push_ok": False, "err": err.strip()[:200]})
         continue
     print(f"  push ok", flush=True)
 
